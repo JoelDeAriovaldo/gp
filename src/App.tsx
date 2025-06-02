@@ -1,5 +1,20 @@
-import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Printer, Home, Info, Target, Clock, DollarSign, Users, FileText, AlertTriangle, BookOpen, CheckSquare, ArrowRight } from 'lucide-react';
+import { useState, useEffect, type SetStateAction} from 'react';
+import {
+    ChevronLeft,
+    ChevronRight,
+    Printer,
+    Home,
+    Info,
+    Target,
+    Clock,
+    DollarSign,
+    Users,
+    FileText,
+    AlertTriangle,
+    BookOpen,
+    CheckSquare,
+    ArrowRight
+} from 'lucide-react';
 
 export default function Presentation() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -8,7 +23,7 @@ export default function Presentation() {
 
     // Handle keyboard navigation
     useEffect(() => {
-        const handleKeyDown = (e) => {
+        const handleKeyDown = (e: { key: string; }) => {
             if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
                 nextSlide();
             } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
@@ -44,7 +59,7 @@ export default function Presentation() {
         }
     };
 
-    const goToSlide = (index) => {
+    const goToSlide = (index: SetStateAction<number>) => {
         if (index !== currentSlide && !transitioning) {
             setTransitioning(true);
             setTimeout(() => {
